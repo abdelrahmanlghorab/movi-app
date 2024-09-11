@@ -22,7 +22,7 @@ export const routes: Routes = [
         title: 'Movie Watch List'
     },
     {
-        path:"movie-details",
+        path:"movie-details/:id",
         component: MovieDetailComponent,
         title: 'Movie Details'
     },
@@ -30,5 +30,7 @@ export const routes: Routes = [
         path: "**",
         component: NotfoundComponent,
         title: 'Not Found'
-    }
+    },
+    
+
 ];

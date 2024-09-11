@@ -1,0 +1,25 @@
+.recommendation-title {
+    font-weight: bold;
+    margin-top: 20px;
+}
+.movie-card {
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+.movie-card img {
+    width: 100%;
+    height: auto;
+}
+.movie-details {
+    margin-top: 10px;
+}
+.movie-title {
+    font-weight: bold;
+    margin-top: 5px;
+}
+.movie-date {
+    color: #777;
+    font-size: 0.9em;
+}
