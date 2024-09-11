@@ -5,29 +5,7 @@ import { CounterService } from './counter.service';
   providedIn: 'root'
 })
 export class WatchListService {
-  private watchList: any[] = [
-    {
-      id: 1,
-      title: 'Item 1',
-      price: 10,
-      description: 'Description 1',
-      image: 'https://picsum.photos/200/300'
-    },
-    {
-      id: 2,
-      title: 'Item 2',
-      price: 20,
-      description: 'Description 2',
-      image: 'https://picsum.photos/200/300'
-    },
-    {
-      id: 3,
-      title: 'Item 3',
-      price: 30,
-      description: 'Description 3',
-      image: 'https://picsum.photos/200/300'
-    }
-  ];
+  private watchList: any[] = [];
   counter:number = 0;
   constructor(private counterService: CounterService) { }
   ngOnInit(){

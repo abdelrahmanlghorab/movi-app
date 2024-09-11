@@ -29,7 +29,7 @@
           <div class="container text-center mt-2">
             <i class="fa-solid fa-star fs-5 "></i>
             <span class="fs-6 text-secondary">
-              {{(movieData.vote_average)}}
+              {{(movieData.vote_average/2).toFixed(1)}}
             </span>
             <span class="fs-6 text-secondary">
               ({{movieData.vote_count}} votes)

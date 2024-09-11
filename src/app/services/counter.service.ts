@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CounterService {
-  private counter = new BehaviorSubject<number>(3);
+  private counter = new BehaviorSubject<number>(0);
   constructor() { }
   getCounter(){
     return this.counter.asObservable();
