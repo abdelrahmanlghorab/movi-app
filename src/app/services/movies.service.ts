@@ -12,4 +12,12 @@ export class MoviesService {
    getMovies() {
      return this.http.get('https://api.themoviedb.org/3/movie/now_playing?api_key=b6d1b0c65bcc889f545646a926fb22b9');
    }
+    private movie: any[] = [];
+
+   addToWatchListArray(data: any) {
+    this.movie.push(data);
+   }
+   getMovie() {
+    return this.movie;
+   }
 }
