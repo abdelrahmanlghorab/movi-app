@@ -22,7 +22,7 @@ export const routes: Routes = [
         title: 'Movie Watch List'
     },
     {
-        path:"movie-details",
+        path:"movie-details/:id",
         component: MovieDetailComponent,
         title: 'Movie Details'
     },
