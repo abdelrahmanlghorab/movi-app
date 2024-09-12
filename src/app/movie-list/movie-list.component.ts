@@ -5,6 +5,8 @@ import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { RouterLink } from '@angular/router';
 import { NgbRatingConfig, NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchComponent } from "../search/search.component";
+import Movie from '../interface';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 
 @Component({
@@ -18,13 +20,13 @@ export class MovieListComponent {
 
   starConfig: any;
   @Input() rating: number = 0;
- 
-  moviesList: any;
+
+  moviesList: Movie[]= [];
   constructor(private movieService: MoviesService) {
   }
 
   ngOnInit() {
-    this.movieService.getMovies().subscribe((data: any) => (this.moviesList = data.results))
+    this.movieService.getMovies().subscribe((data:any) => (this.moviesList = data.results))
   }
   reciveFromChild(id: number) {
     console.log('FROM PARENT', id);
