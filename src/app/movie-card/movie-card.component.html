@@ -11,7 +11,7 @@
         <img [src]="'https://image.tmdb.org/t/p/w500/'+ movieData.poster_path"
           class="card-img-top bg-dark rounded rounded-top-5 ">
         <div class="header-icon-container">
-          <a href="#">
+          <a (click)="navigateToDetails(movieData.id)">
             <i class="material-icons header-icon"></i>
           </a>
         </div>
