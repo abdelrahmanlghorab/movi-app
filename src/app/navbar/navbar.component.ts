@@ -5,6 +5,7 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 
 
 
+import { CounterService } from '../services/counter.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,4 +16,12 @@ import { faHeart } from '@fortawesome/free-regular-svg-icons';
 })
 export class NavbarComponent {
 faHeart = faHeart
+  constructor(private counterService: CounterService) { }
+  counter: number = 0;
+  ngOnInit(){
+    this.counterService.getCounter().subscribe(counter => {
+      this.counter = counter;
+    });
+
+}
 }
