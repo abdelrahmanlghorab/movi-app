@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { SearchService } from '../services/search.service';
 
 @Component({
   selector: 'app-search-result',
@@ -8,5 +9,10 @@ import { Component } from '@angular/core';
   styleUrl: './search-result.component.css'
 })
 export class SearchResultComponent {
-
+SearchResult=inject(SearchService);
+movieSearchResult:any;
+ngOnInit() {
+  this.movieSearchResult = this.SearchResult.getSearchMovies().subscribe(res => {
+    this.movieSearchResult = res;});
+}
 }

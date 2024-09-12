@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 import { MovieListComponent } from './movie-list/movie-list.component';
-import { SearchComponent } from './search/search.component';
 import { WatchListComponent } from './watch-list/watch-list.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { SearchResultComponent } from './search-result/search-result.component';
 
 export const routes: Routes = [
     {
@@ -12,8 +12,8 @@ export const routes: Routes = [
         title: 'Movie Home'
     },
     {
-        path:"search",
-        component: SearchComponent,
+        path:"search/:key",
+        component: SearchResultComponent,
         title: 'Movie Search'
     },
     {
@@ -31,6 +31,6 @@ export const routes: Routes = [
         component: NotfoundComponent,
         title: 'Not Found'
     },
-    
+
 
 ];

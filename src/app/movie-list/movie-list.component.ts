@@ -15,9 +15,10 @@ import { SearchComponent } from "../search/search.component";
   styleUrl: './movie-list.component.css'
 })
 export class MovieListComponent {
+
   starConfig: any;
   @Input() rating: number = 0;
-
+ 
   moviesList: any;
   constructor(private movieService: MoviesService) {
   }
@@ -28,5 +29,5 @@ export class MovieListComponent {
   reciveFromChild(id: number) {
     console.log('FROM PARENT', id);
   }
- 
+
 }
