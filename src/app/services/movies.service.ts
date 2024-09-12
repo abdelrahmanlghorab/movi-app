@@ -12,12 +12,32 @@ export class MoviesService {
    getMovies() {
      return this.http.get('https://api.themoviedb.org/3/movie/now_playing?api_key=b6d1b0c65bcc889f545646a926fb22b9');
    }
-    private movie: any[] = [];
+    private movies: any[] = [];
+    private hovered: any[] = [];
 
    addToWatchListArray(data: any) {
-    this.movie.push(data);
+    this.movies.push(data);
+    this.hovered.push({
+      id:data.id,
+      hover:true
+    });
    }
    getMovie() {
-    return this.movie;
+    return this.movies;
+   }
+   getHovered() {
+    return this.hovered;
+   }
+   setHovered(data: any) {
+    this.hovered.push({
+      id:data.id,
+      hover:true
+    });
+   }
+   removeHovered(data: any) {
+    this.hovered = this.hovered.filter(movie => movie.id !== data.id);
+   }
+   gethoverdmovie(id: number) {
+    return this.hovered.find(movie => movie.id === id);
    }
 }
