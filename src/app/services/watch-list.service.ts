@@ -28,5 +28,9 @@ export class WatchListService {
       this.watchList.splice(index, 1);
       this.counterService.decreaseCounter();
     }
+    console.log(this.watchList);
+  }
+  setWatchList(watchList: any[]){
+    this.watchList = watchList;
   }
 }

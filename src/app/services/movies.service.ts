@@ -42,7 +42,10 @@ export class MoviesService {
     });
    }
    removeHovered(data: any) {
-    this.hovered = this.hovered.filter(movie => movie.id !== data.id);
+    const index = this.hovered.findIndex(movie => movie.id === data.id);
+    if (index !== -1) {
+      this.hovered.splice(index, 1);
+    }
    }
    gethoverdmovie(id: number) {
     return this.hovered.find(movie => movie.id === id);

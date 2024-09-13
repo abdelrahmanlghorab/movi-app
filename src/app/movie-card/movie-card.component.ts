@@ -13,7 +13,6 @@ import { RateComponent } from "../rate/rate.component";
 })
 export class MovieCardComponent {
     movieService= inject(MoviesService);
-    watchListArray:any[]=[];
     hovered :any[]=[];
     watchListservice= inject(WatchListService);
   isHoverd: boolean = false;
@@ -21,6 +20,7 @@ export class MovieCardComponent {
 
 @Input() movieData:any;
 @Output() sendToParent = new EventEmitter<number>();
+@Input() watchListArray :any;
 constructor(private router:Router){}
 ngOnInit() {
   this.watchListArray = this.watchListservice.getWatchList();
@@ -36,10 +36,12 @@ ngOnInit() {
 }
   hoverd() {
     this.isHoverd = !this.isHoverd;
-    if (this.isHoverd) {
+    if (this.isHoverd==true ) {
       this.watchListservice.addToWatchList(this.movieData);
       this.movieService.setHovered(this.movieData);
-    }else{
+    }
+    if(this.isHoverd==false)
+    {
       this.watchListservice.removeFromWatchList(this.movieData);
       this.movieService.removeHovered(this.movieData);
       this.isHoverd = this.movieService.gethoverdmovie(this.movieData.id);
