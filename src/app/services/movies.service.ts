@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import Movie from '../interface';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +12,20 @@ export class MoviesService {
   constructor(private http:HttpClient) {
 
    }
-   getMovies() {
-     return this.http.get('https://api.themoviedb.org/3/movie/now_playing?api_key=b6d1b0c65bcc889f545646a926fb22b9');
+
+  getPaginatedData(page: number, pageSize: number): Observable<Movie>{
+    return this.http.get<Movie>(`/https://api.themoviedb.org/3/movie/popular?api_key=b6d1b0c65bcc889f545646a926fb22b9&page=${page}`);
+  }
+  getMovies(): Observable<Movie[]> {
+    return this.http.get<Movie[]>('https://api.themoviedb.org/3/movie/now_playing?api_key=b6d1b0c65bcc889f545646a926fb22b9');
    }
-    private movies: any[] = [];
+    private movies: Movie[] = [];
     private hovered: any[] = [];
 
-   addToWatchListArray(data: any) {
+   addToWatchListArray(data: Movie) {
     this.movies.push(data);
     this.hovered.push({
-      id:data.id,
+      id:data.results,
       hover:true
     });
    }
@@ -35,7 +42,10 @@ export class MoviesService {
     });
    }
    removeHovered(data: any) {
-    this.hovered = this.hovered.filter(movie => movie.id !== data.id);
+    const index = this.hovered.findIndex(movie => movie.id === data.id);
+    if (index !== -1) {
+      this.hovered.splice(index, 1);
+    }
    }
    gethoverdmovie(id: number) {
     return this.hovered.find(movie => movie.id === id);
