@@ -33,9 +33,11 @@ export class MovieListComponent {
   ngOnInit() {
     this.movieService.getPaginatedData(this.currentPage).subscribe((res) => {
       this.moviesList = res.results;
+      this.currentPage = res.page;
     });
     this.movieService.getData().subscribe((data: any) => {
       this.moviesList = data.results;
+      this.currentPage = data.page;
     });
     this.watchList = this.watchListservice.getWatchList();
   
