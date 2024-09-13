@@ -1,7 +1,6 @@
 /* Set the image container to relative so the icon is positioned relative to it */
 .card {
     position: relative;
-    height: 470px;
     overflow: hidden;
 }
 
