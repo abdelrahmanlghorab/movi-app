@@ -1,50 +1,35 @@
-
-<div class="container">
-  <!-- here i loopd on results -->
-  <div class="container mx-auto py-3" *ngFor="let result of results">
-    <div class="col">
-      <div class="card rounded rounded-5">
-        <div class="col-8">
-          <span class="badge rounded-pill text-center fs-6" style="
-              width: 8em;
-              height: 1.7em;
-              position: absolute;
-              top: 1em;
-              left: 1em;
-              opacity: 90%;
-              background-color: #6abcea;
-            ">
-            {{ result.release_date }}
-          </span>
-        </div>
-        <img [src]="'https://image.tmdb.org/t/p/w500/' + result.poster_path"
-          class="card-img-top bg-dark rounded rounded-top-5" />
-        <div class="header-icon-container">
-          <a href="#">
-            <i class="material-icons header-icon"></i>
-          </a>
-        </div>
-        <div class="card-body pe-4">
-          <div class="row">
-            <div class="col-10">
-              <span class="card-title text-start fs-5 fw-bold">{{
-                result.original_title
-                }}</span>
-              <p class="card-text">{{ result.description }}</p>
-            </div>
-            <div class="col-2 text-end"></div>
-          </div>
-          <div class="container text-center mt-2">
-            <i class="fa-solid fa-star fs-5"></i>
-            <span class="fs-6 text-secondary">
-              {{ (result.vote_average / 2).toFixed(1) }}
-            </span>
-            <span class="fs-6 text-secondary">
-              ({{ result.vote_count }} votes)
-            </span>
-          </div>
-        </div>
-      </div>
+<div class="container-fluid">
+  <div class="row g-2 justify-content-start align-items-center mt-4">
+    <div class="col-md-12 col-lg-9 ms-5">
+      <input
+        type="search"
+        #input
+        class="form-control p-2 fs-5 border border-3 rounded-4"
+        placeholder="Search for movies..."
+      />
+    </div>
+    <div class="col-md-3 col-lg-2 ms-5">
+      <button
+        type="submit"
+        (click)="searchFn(input.value)"
+        class="btn colorCayan fw-bold p-2 fs-4 text-white rounded-4 w-100"
+      >
+        Search
+      </button>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <h2 class="my-5 fw-bold text-black">
+      Search Results For:
+      <small class="fw-light fs-2" style="color: #6abcea">{{ keyword }}</small>
+    </h2>
+    <div class="row row-cols-sm-1 row-cols-md-5 mt-4 g-3">
+      @for(movie of movieSearchResult.results; track $index){
+      <app-movie-card
+        [movieData]="movie"
+        [watchListArray]="watchList"
+      ></app-movie-card>
+      }
     </div>
   </div>
 </div>
