@@ -23,10 +23,6 @@ export class MovieListComponent {
   currentPage: number = 1;
   total_pages: number=1;
   pageSize: number = 20;
-
-
-
-  starConfig: any;
   watchList:any[]=[];
   watchListservice= inject(WatchListService);
   @Input() rating: number = 0;

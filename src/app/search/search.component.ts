@@ -13,7 +13,7 @@ export class SearchComponent {
   searchService=inject(SearchService)
 constructor(private router:Router){}
   searchFn(key:string){
-     this.searchService.getSearchResult(key)
+     this.searchService.getSearchResult(key);
     this.router.navigate([`/search/${key}`]);
   }
 }
