@@ -19,6 +19,7 @@
     padding: 10px 20px;
     font-weight: bold;
     transition:  all 0.3s ease;
+    margin-bottom: 20px;
 }
 .back-button:hover {
     transform: scale(1.1);
