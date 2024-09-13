@@ -6,6 +6,8 @@ import { RouterLink } from '@angular/router';
 import {  NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchComponent } from "../search/search.component";
 import { WatchListService } from '../services/watch-list.service';
+import Movie from '../interface';
+import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 
 
 @Component({
@@ -16,21 +18,23 @@ import { WatchListService } from '../services/watch-list.service';
   styleUrl: './movie-list.component.css'
 })
 export class MovieListComponent {
+
   starConfig: any;
   watchList:any[]=[];
   watchListservice= inject(WatchListService);
   @Input() rating: number = 0;
 
-  moviesList: any;
+  moviesList: Movie[]= [];
   constructor(private movieService: MoviesService) {
   }
 
   ngOnInit() {
     this.movieService.getMovies().subscribe((data: any) => (this.moviesList = data.results));
     this.watchList = this.watchListservice.getWatchList();
+    this.movieService.getMovies().subscribe((data:any) => (this.moviesList = data.results))
   }
   reciveFromChild(id: number) {
     console.log('FROM PARENT', id);
   }
- 
+
 }
