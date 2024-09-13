@@ -9,5 +9,9 @@
 
     }
   </div>
+  <div class="container">
+    <app-movie-list-pagination [currentPage]="currentPage" [total_pages]="total_pages"
+ (pageChange)="onPageChange($event)"></app-movie-list-pagination>
+  </div>
 </div>
-</div><!--container-->
+</div>
