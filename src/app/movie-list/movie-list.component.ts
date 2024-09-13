@@ -3,7 +3,6 @@ import { MoviesService } from '../services/movies.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { RouterLink } from '@angular/router';
-import {  NgbRatingModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchComponent } from "../search/search.component";
 import { WatchListService } from '../services/watch-list.service';
 import Movie from '../interface';
@@ -27,19 +26,22 @@ export class MovieListComponent {
   watchListservice= inject(WatchListService);
   @Input() rating: number = 0;
 
-  moviesList: Movie[]=[];
+  moviesList: any[]=[];
   constructor(private movieService: MoviesService) {
   }
 
   ngOnInit() {
-    this.movieService.getMovies().subscribe((data: any) => (this.moviesList = data.results));
+    this.movieService.getPaginatedData(this.currentPage).subscribe((res) => {
+      this.moviesList = res.results;
+    });
+    this.movieService.getData().subscribe((data: any) => {
+      this.moviesList = data.results;
+    });
     this.watchList = this.watchListservice.getWatchList();
-    this.movieService.getMovies().subscribe((data:any) => (this.moviesList = data.results))
-    this.movieService.getMovies()
-      .subscribe((data:any) => (this.moviesList = data.results))
+  
   }
-  reciveFromChild(id: number) {
-    console.log('FROM PARENT', id);
+  reciveFromChild(data: any) {
+    this.moviesList = data;
   }
   onPageChange(page: number): void {
     this.currentPage = page;

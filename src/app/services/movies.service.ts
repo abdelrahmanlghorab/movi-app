@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import Movie from '../interface';
 
 
@@ -8,13 +8,13 @@ import Movie from '../interface';
   providedIn: 'root'
 })
 export class MoviesService {
-
+  private data = new BehaviorSubject<any>([]);
   constructor(private http:HttpClient) {
 
    }
 
-  getPaginatedData(page: number, pageSize: number): Observable<Movie>{
-    return this.http.get<Movie>(`/https://api.themoviedb.org/3/movie/popular?api_key=b6d1b0c65bcc889f545646a926fb22b9&page=${page}`);
+  getPaginatedData(page: number): Observable<Movie>{
+    return this.http.get<any>(`https://api.themoviedb.org/3/movie/popular?api_key=b6d1b0c65bcc889f545646a926fb22b9&page=${page}`);
   }
   getMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>('https://api.themoviedb.org/3/movie/now_playing?api_key=b6d1b0c65bcc889f545646a926fb22b9');
@@ -49,5 +49,11 @@ export class MoviesService {
    }
    gethoverdmovie(id: number) {
     return this.hovered.find(movie => movie.id === id);
+   }
+   setdata(data:any){
+    this.data.next(data);
+   }
+   getData(){
+    return this.data.asObservable();
    }
 }
