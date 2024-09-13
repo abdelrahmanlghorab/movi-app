@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MovieDetailService } from '../services/movie-detail.service';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
+import { WatchListService } from '../services/watch-list.service';
+import { MoviesService } from '../services/movies.service';
 
 @Component({
   selector: 'app-movie-recomandation',
@@ -11,22 +13,44 @@ import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
   styleUrl: './movie-recomandation.component.css'
 })
 export class MovieRecomandationComponent {
-  moviereco : any;
-  id :string= '';
+  moviereco: any;
+  id: string = '';
+  watchListArray: any[] = [];
+  hovered: { [key: number]: boolean } = {};
   isHoverd: boolean = false;
-  constructor(private movieRecomandationService: MovieDetailService,private activatedRoute: ActivatedRoute) {
+
+  movieService = inject(MoviesService);
+  watchListservice = inject(WatchListService);
+
+  constructor(
+    private movieRecomandationService: MovieDetailService,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.id = this.activatedRoute.snapshot.params['id'];
   }
- 
+
   ngOnInit() {
     this.movieRecomandationService.getMovieRecomandation(this.id).subscribe((data: any) => {
       this.moviereco = data.results;
+
+      this.moviereco.forEach((movie: any) => {
+        this.hovered[movie.id] = this.movieService.gethoverdmovie(movie.id) || false;
+      });
     });
+
+    this.watchListArray = this.watchListservice.getWatchList();
   }
-  hoverd() {
-    this.isHoverd = !this.isHoverd
+
+  Hover(movie: any) {
+    this.hovered[movie.id] = !this.hovered[movie.id];
+
+    if (this.hovered[movie.id]) {
+      this.watchListservice.addToWatchList(movie);
+      this.movieService.setHovered(movie);
+    } else {
+      this.watchListservice.removeFromWatchList(movie);
+      this.movieService.removeHovered(movie);
+      this.hovered[movie.id] = this.movieService.gethoverdmovie(movie.id) || false;
+    }
   }
 }
-
-
-
