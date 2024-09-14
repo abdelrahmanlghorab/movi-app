@@ -11,7 +11,7 @@ import { MoviesService } from '../services/movies.service';
 })
 export class MovieListPaginationComponent {
 CommonModule: any;
-page:number=1;
+page:number=0;
 movieService = inject(MoviesService);
 data: any;
 ngOnInit() {
