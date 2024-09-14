@@ -19,6 +19,6 @@ export class SearchService {
   }
 
   getKey() {
-    return this.key;  // Corrected from this.Key to this.key
+    return this.key;
   }
 }
