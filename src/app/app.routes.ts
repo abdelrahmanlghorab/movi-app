@@ -16,6 +16,11 @@ export const routes: Routes = [
         component: SearchResultComponent,
         title: 'Movie Search'
     },
+  // {
+  //   path: "search",
+  //   component: MovieListComponent,
+  //   title: 'Movie Search'
+  // },
     {
         path:"watch-list",
         component: WatchListComponent,

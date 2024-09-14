@@ -21,16 +21,22 @@ export class SearchResultComponent {
 
   constructor(private router: Router) {}
 
-  searchFn(key: string) {
-    this.searchService.getSearchResult(key);
-    this.router.navigate([`/search/${key}`]);
-  }
-
   ngOnInit() {
     this.searchService.getSearchMovies().subscribe(res => {
       this.movieSearchResult = res;
-      console.log(this.movieSearchResult);
     });
     this.keyword = this.searchService.getKey();
+  }
+  searchFn(key: string) {
+    if (key == "" || key.startsWith(' ')) {
+      this.router.navigate([""]);
+    } else {
+    this.searchService.getSearchResult(key);
+    this.searchService.getSearchMovies().subscribe(res => {
+      this.movieSearchResult = res;
+    });
+    this.keyword = this.searchService.getKey();
+    this.router.navigate([`/search/${key}`]);
+  }
   }
 }
