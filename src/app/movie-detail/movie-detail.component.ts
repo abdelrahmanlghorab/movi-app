@@ -4,11 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { MovieRecomandationComponent } from "../movie-recomandation/movie-recomandation.component";
 import { WatchListService } from '../services/watch-list.service';
 import { MoviesService } from '../services/movies.service';
+import { CustomDatePipe } from '../custom-date.pipe';
 
 @Component({
   selector: 'app-movie-detail',
   standalone: true,
-  imports: [MovieRecomandationComponent],
+  imports: [MovieRecomandationComponent,CustomDatePipe],
   templateUrl: './movie-detail.component.html',
   styleUrl: './movie-detail.component.css'
 })

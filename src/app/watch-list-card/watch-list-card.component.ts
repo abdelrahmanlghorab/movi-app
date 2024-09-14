@@ -5,10 +5,11 @@ import { WatchListService } from '../services/watch-list.service';
 import { CounterService } from '../services/counter.service';
 import { SharedModule } from '../shared.module';
 import { MoviesService } from '../services/movies.service';
+import { CustomDatePipe } from '../custom-date.pipe';
 @Component({
   selector: 'app-watch-list-card',
   standalone: true,
-  imports: [FontAwesomeModule, RateComponent ,SharedModule],
+  imports: [FontAwesomeModule, RateComponent ,SharedModule,CustomDatePipe],
   templateUrl: './watch-list-card.component.html',
   styleUrl: './watch-list-card.component.css'
 })

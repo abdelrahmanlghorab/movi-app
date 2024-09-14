@@ -6,7 +6,7 @@
         </div>
         <div class="col-md-8">
             <h2>{{movies.title}}</h2>
-            <p>Sep 25, 2017</p>
+            <p>{{ movies.release_date | customDate}}</p>
           <div class="col-2 text-start">
             <i [class]="(hovered[movies.id] ? 'fa-solid ' : 'fa-regular ') + 'fa-heart fs-2 movie-favorite'"
                (click)="Hover(movies)"></i>

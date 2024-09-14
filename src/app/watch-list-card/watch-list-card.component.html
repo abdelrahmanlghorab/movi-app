@@ -20,7 +20,7 @@
           ></i>
         </div>
         <p class="card-text movie-time">
-          <small class="text-body-secondary fw-light">{{movie.release_date}}</small>
+          <small class="text-body-secondary fw-light">{{movie.release_date | customDate}}</small>
         </p>
         <div>
           <app-rate [rating]="parseflout(movie.vote_average)"></app-rate>
