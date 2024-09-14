@@ -1,6 +1,10 @@
 .colorCayan {
     background-color: #6ABCEA;
 }
+.searchDiv{
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+}
 
 .colorCayan:hover {
     background-color: #4A9BCC; /* darker shade for hover effect */

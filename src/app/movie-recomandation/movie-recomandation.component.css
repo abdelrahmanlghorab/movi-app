@@ -58,6 +58,15 @@
 .card-body:hover {
     transform: scale(1.02);
 }
+.badge{
+  width:8em;
+  height:1.7em;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  opacity:90%;
+  background-color: #6ABCEA
+}
 
 @media (max-width: 768px) {
     .header-icon {
