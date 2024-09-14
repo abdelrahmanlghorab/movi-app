@@ -2,14 +2,14 @@
 <app-search></app-search>
 <div class="container-fluid">
   <h2 class="my-5 fw-bold text-black">Now Playing</h2>
-  <div class="container d-flex justify-content-center align-items-center gap-2">
-    <app-movie-list-pagination></app-movie-list-pagination>
-    <strong class="fs-3 text-primary fw-bold" style="position: relative; top: -9px;">{{currentPage}}</strong>
-    </div>
   <div class="row row-cols-sm-1 row-cols-md-5 mt-4 g-3">
     @for(movie of moviesList; track $index){
         <app-movie-card [movieData]="movie" [watchListArray]="watchList" (sendToParent)="reciveFromChild($event)"></app-movie-card>
     }
   </div>
+  <div class="container d-flex justify-content-center align-items-center gap-2">
+    <app-movie-list-pagination></app-movie-list-pagination>
+    <!-- <strong class="fs-3 text-primary fw-bold" style="position: relative; top: -9px;">{{currentPage}}</strong> -->
+    </div>
 </div>
 </div>
