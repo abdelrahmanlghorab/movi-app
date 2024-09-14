@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { MovieDetailService } from '../services/movie-detail.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 import { WatchListService } from '../services/watch-list.service';
 import { MoviesService } from '../services/movies.service';
@@ -16,6 +16,8 @@ import { CustomDatePipe } from '../custom-date.pipe';
 export class MovieRecomandationComponent {
   moviereco: any;
   id: string = '';
+  @Output() sendToParent = new EventEmitter<any>();
+  
   watchListArray: any[] = [];
   hovered: { [key: number]: boolean } = {};
   isHoverd: boolean = false;
@@ -25,7 +27,8 @@ export class MovieRecomandationComponent {
 
   constructor(
     private movieRecomandationService: MovieDetailService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router:Router
   ) {
     this.id = this.activatedRoute.snapshot.params['id'];
   }
@@ -53,5 +56,17 @@ export class MovieRecomandationComponent {
       this.movieService.removeHovered(movie);
       this.hovered[movie.id] = this.movieService.gethoverdmovie(movie.id) || false;
     }
+  }
+  navigateToDetails(movie:any) {
+    this.movieRecomandationService.getMovieRecomandation(movie.id).subscribe((data: any) => {
+      this.moviereco = data.results;
+
+      this.moviereco.forEach((movie: any) => {
+        this.hovered[movie.id] = this.movieService.gethoverdmovie(movie.id) || false;
+      });
+    });
+    
+    this.router.navigate([`/movie-details/${movie.id}`]);
+    this.sendToParent.emit(movie);
   }
 }

@@ -26,7 +26,13 @@
           [src]="'https://image.tmdb.org/t/p/w500/' + movie.poster_path"
           class="card-img-top bg-dark rounded rounded-top-5"
         />
-        <div class="header-icon-container"></div>
+
+        <div class="header-icon-container">
+          <a (click)="navigateToDetails(movie)">
+            <i class="material-icons header-icon"></i>
+          </a>
+        </div>
+
         <div class="card-body pe-4">
           <div class="row">
             <div class="col-10">

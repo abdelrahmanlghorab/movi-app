@@ -4,6 +4,7 @@ import { Router, RouterLink } from '@angular/router';
 import { WatchListService } from '../services/watch-list.service';
 import { RateComponent } from "../rate/rate.component";
 import { CustomDatePipe } from '../custom-date.pipe';  // Import the custom date pipe
+import { MovieDetailService } from '../services/movie-detail.service';
 
 @Component({
   selector: 'app-movie-card',
@@ -14,6 +15,7 @@ import { CustomDatePipe } from '../custom-date.pipe';  // Import the custom date
 })
 export class MovieCardComponent {
   movieService = inject(MoviesService);
+  moviedetailservice = inject(MovieDetailService);
   hovered: any[] = [];
   watchListservice = inject(WatchListService);
   isHoverd: boolean = false;
@@ -35,6 +37,7 @@ export class MovieCardComponent {
 
   navigateToDetails(id: number) {
     this.sendToParent.emit(id);
+    this.moviedetailservice.setid(id);
     this.router.navigate([`/movie-details/${id}`]);
   }
 

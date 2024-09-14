@@ -32,6 +32,7 @@ export class MovieDetailComponent {
       this.hovered[this.movies.id] = this.movieService.gethoverdmovie(this.movies.id) || false;
     });
     this.watchListArray = this.watchListService.getWatchList();
+    this.recive;
   }
 
   Hover(movie: any) {
@@ -44,6 +45,11 @@ export class MovieDetailComponent {
       this.watchListService.removeFromWatchList(movie);
       this.movieService.removeHovered(movie);
       this.hovered[movie.id] = this.movieService.gethoverdmovie(movie.id) || false;
+    }
+  }
+  recive(movie: any) {
+    if(movie){
+      this.movies = movie;
     }
   }
 }
