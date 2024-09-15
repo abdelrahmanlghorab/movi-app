@@ -2,5 +2,13 @@
       color:white !important;
       background-color: #6ABCEA !important;
 }
-
-
+@media (max-width: 415px) {
+    .badge {
+        left: 44% !important;
+        top: 7em !important;
+    }}
+@media (max-width: 768px) and (min-width: 410px) {
+    .badge {
+        left: 83% !important;
+        top: 2em !important;
+    }}
