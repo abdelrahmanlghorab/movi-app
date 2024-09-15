@@ -22,7 +22,7 @@ export class MovieListComponent {
   currentPage: number = 1;
   total_pages: number=1;
   pageSize: number = 20;
-  watchList:any[]=[];
+  watchList:Movie[]=[];
   watchListservice= inject(WatchListService);
   @Input() rating: number = 0;
 

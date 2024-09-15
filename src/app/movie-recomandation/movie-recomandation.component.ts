@@ -5,6 +5,7 @@ import { MovieDetailComponent } from '../movie-detail/movie-detail.component';
 import { WatchListService } from '../services/watch-list.service';
 import { MoviesService } from '../services/movies.service';
 import { CustomDatePipe } from '../custom-date.pipe';
+import Movie from '../interface';
 
 @Component({
   selector: 'app-movie-recomandation',
@@ -16,9 +17,9 @@ import { CustomDatePipe } from '../custom-date.pipe';
 export class MovieRecomandationComponent {
   moviereco: any;
   id: string = '';
-  @Output() sendToParent = new EventEmitter<any>();
+  @Output() sendToParent = new EventEmitter<Movie>();
   
-  watchListArray: any[] = [];
+  watchListArray: Movie[] = [];
   hovered: { [key: number]: boolean } = {};
   isHoverd: boolean = false;
 
@@ -48,16 +49,19 @@ export class MovieRecomandationComponent {
   Hover(movie: any) {
     this.hovered[movie.id] = !this.hovered[movie.id];
 
-    if (this.hovered[movie.id]) {
-      this.watchListservice.addToWatchList(movie);
-      this.movieService.setHovered(movie);
-    } else {
-      this.watchListservice.removeFromWatchList(movie);
-      this.movieService.removeHovered(movie);
-      this.hovered[movie.id] = this.movieService.gethoverdmovie(movie.id) || false;
-    }
+  if (this.hovered[movie.id]) {
+    this.watchListservice.addToWatchList(movie);
+    this.movieService.setHovered(movie);
+  } else {
+    this.watchListservice.removeFromWatchList(movie);
+    this.movieService.removeHovered(movie);
+    this.hovered[movie.id] = this.movieService.gethoverdmovie(movie.id) || false;
   }
+}
   navigateToDetails(movie:any) {
+    setTimeout(() => {
+      this.sendToParent.emit(movie);
+    }, 100);
     this.movieRecomandationService.getMovieRecomandation(movie.id).subscribe((data: any) => {
       this.moviereco = data.results;
 
@@ -67,6 +71,6 @@ export class MovieRecomandationComponent {
     });
     
     this.router.navigate([`/movie-details/${movie.id}`]);
-    this.sendToParent.emit(movie);
+    
   }
 }
