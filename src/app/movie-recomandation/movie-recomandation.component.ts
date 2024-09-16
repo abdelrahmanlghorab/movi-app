@@ -61,7 +61,7 @@ export class MovieRecomandationComponent {
   navigateToDetails(movie:any) {
     setTimeout(() => {
       this.sendToParent.emit(movie);
-    }, 100);
+    }, 200);
     this.movieRecomandationService.getMovieRecomandation(movie.id).subscribe((data: any) => {
       this.moviereco = data.results;
 
