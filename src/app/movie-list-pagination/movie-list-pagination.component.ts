@@ -11,9 +11,10 @@ import { MoviesService } from '../services/movies.service';
 })
 export class MovieListPaginationComponent {
 CommonModule: any;
-page:number=0;
+page:number=1;
 movieService = inject(MoviesService);
 data: any;
+num = 1;
 ngOnInit() {
   this.movieService.getPaginatedData(this.page).subscribe((res) => {
     this.data = res;
@@ -28,6 +29,7 @@ back() {
     });
     console.log(this.data);
     this.movieService.setdata(this.data);
+    this.num=this.data.page;
   }
 }
 next() {
@@ -37,6 +39,7 @@ next() {
   });
   console.log(this.data);
   this.movieService.setdata(this.data);
+  this.num=this.data.page;
 }
 
 }

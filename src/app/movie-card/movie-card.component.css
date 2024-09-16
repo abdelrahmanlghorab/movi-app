@@ -1,121 +1,99 @@
 .card {
-    position: relative;
-    overflow: hidden;
+  position: relative;
+  overflow: hidden;
 }
 
 .header-icon-container {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .header-icon {
-    font-size: 54px;
-    text-shadow: 0px 0px 20px #6ABCEA, 0px 5px 20px #6ABCEA;
-    color: #6ABCEA;
-    opacity: 0.85;
-    transition: all 0.3s ease-in-out;
+  font-size: 54px;
+  text-shadow: 0px 0px 20px #6abcea, 0px 5px 20px #6abcea;
+  color: #6abcea;
+  opacity: 0.85;
+  transition: all 0.3s ease-in-out;
 }
 
 .header-icon:hover {
-    font-size: 74px;
-    text-shadow: 0px 0px 20px #6ABCEA, 0px 5px 30px #6ABCEA;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 50px;
-    opacity: 1;
+  font-size: 74px;
+  text-shadow: 0px 0px 20px #6abcea, 0px 5px 30px #6abcea;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  opacity: 1;
 }
-
-@media (max-width: 768px) {
-    .header-icon {
-        font-size: 40px;
-    }
-
-    .header-icon:hover {
-        font-size: 60px;
-    }
+.fa-heart {
+  color: #6abcea;
 }
-
-@media (max-width: 480px) {
-    .header-icon {
-        font-size: 120px;
-    }
-
-    .header-icon:hover {
-        font-size: 150px;
-    }
+.fa-star {
+  color: #6abcea;
 }
-   .fa-heart{
-            color: #6ABCEA;
-    }
-    .fa-star{
-            color: #6ABCEA;
-
-    }
 .card {
-    position: relative;
-    transition: all 0.3s ease-in-out;
-    cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    transform: translateY(-10px);
-    transition: all 0.3s ease-in-out;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
 }
 
 .card:hover .header-icon {
-    font-size: 74px;
-    text-shadow: 0px 0px 20px #6ABCEA, 0px 5px 30px #6ABCEA;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 50px;
-    opacity: 1;
+  font-size: 74px;
+  text-shadow: 0px 0px 20px #6abcea, 0px 5px 30px #6abcea;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  opacity: 1;
 }
 
 .card-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
+  display: block;
+  text-decoration: none;
+  color: inherit;
 }
 
 .card-body {
-    transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .card-body:hover {
-    transform: scale(1.02);
+  transform: scale(1.02);
 }
-.badge{
-  width:8em;
-  height:1.7em;
+.badge {
+  width: 8em;
+  height: 1.7em;
   position: absolute;
   top: 1em;
   left: 1em;
-  opacity:90%;
-  background-color: #6ABCEA
+  opacity: 90%;
+  background-color: #6abcea;
 }
 
-
 @media (max-width: 768px) {
-    .header-icon {
-        font-size: 40px;
-    }
+  .header-icon {
+    font-size: 40px;
+  }
 
-    .header-icon:hover {
-        font-size: 60px;
-    }
+  .header-icon:hover {
+    font-size: 60px;
+  }
 }
 
 @media (max-width: 480px) {
-    .header-icon {
-        font-size: 30px;
-    }
+  .header-icon {
+    font-size: 30px;
+  }
 
-    .header-icon:hover {
-        font-size: 50px;
-    }
+  .header-icon:hover {
+    font-size: 50px;
+  }
 }
