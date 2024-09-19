@@ -14,19 +14,19 @@ import { MovieListPaginationComponent } from '../movie-list-pagination/movie-lis
 @Component({
   selector: 'app-movie-list',
   standalone: true,
-  imports: [FontAwesomeModule, MovieCardComponent, RouterLink, SearchComponent,MovieListPaginationComponent],
+  imports: [FontAwesomeModule, MovieCardComponent, RouterLink, SearchComponent, MovieListPaginationComponent],
   templateUrl: './movie-list.component.html',
   styleUrl: './movie-list.component.css'
 })
 export class MovieListComponent {
   currentPage: number = 1;
-  total_pages: number=1;
+  total_pages: number = 1;
   pageSize: number = 20;
-  watchList:Movie[]=[];
-  watchListservice= inject(WatchListService);
+  watchList: Movie[] = [];
+  watchListservice = inject(WatchListService);
   @Input() rating: number = 0;
 
-  moviesList: any[]=[];
+  moviesList: any[] = [];
   constructor(private movieService: MoviesService) {
   }
 
@@ -40,7 +40,7 @@ export class MovieListComponent {
       this.currentPage = data.page;
     });
     this.watchList = this.watchListservice.getWatchList();
-  
+
   }
   reciveFromChild(data: any) {
     this.moviesList = data;
